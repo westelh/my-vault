@@ -29,21 +29,6 @@ module "view_policy" {
       path         = "sys/mounts"
       capabilities = ["read"]
     },
-    {
-      description  = "identity"
-      path         = "identity/*"
-      capabilities = ["read", "list"]
-    },
-    {
-      description  = "kubernetes/*"
-      path         = "kubernetes/*"
-      capabilities = ["read", "list"]
-    },
-    {
-      description  = "kv/*"
-      path         = "kv/*"
-      capabilities = ["read", "list"]
-    },
   ]
 }
 
@@ -56,6 +41,7 @@ module "auth0" {
   client_secret = var.auth0_client_secret
   policies = [
     "default",
+    "kubernetes-clusterrole-admin",
     module.view_policy.name,
   ]
   vault_host = var.vault_host
