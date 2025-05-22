@@ -3,6 +3,12 @@ module "kubernetes_engine" {
   version           = "1.0.0"
   description       = "Kubernetes Secret Engine"
   roles             = {}
+  cluster_roles = {
+    "admin" = ["default"]
+    "view" = ["default"]
+    "edit" = ["default"]
+    "cluster-admin" = ["default"]
+  }
   extra_annotations = {}
   extra_labels      = {}
 }
