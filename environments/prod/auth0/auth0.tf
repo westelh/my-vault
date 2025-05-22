@@ -46,7 +46,10 @@ module "auth0" {
   client_secret = var.auth0_client_secret
   policies = [
     "default",
+    "kubernetes-clusterrole-view",
+    "kubernetes-clusterrole-edit",
     "kubernetes-clusterrole-admin",
+    "kubernetes-clusterrole-cluster-admin",
     module.view_policy.name,
   ]
   vault_host = var.vault_host
